@@ -10,7 +10,9 @@ case "$1" in
             # Source debconf library.
             . /usr/share/debconf/confmodule
             # Unregister the package
-            db_unregister google-android-installers/mirror
+            if db_get google-android-installers/mirror; then
+                db_unregister google-android-installers/mirror
+            fi
         fi
         ;;
 
